@@ -14,6 +14,7 @@ body {
 .profile-img {
   border-radius: 50px !important;
 }
+
 /* Sidebar */
 .sidebar {
   min-width: 220px;
@@ -23,12 +24,7 @@ body {
   padding: 20px;
   border-right: 1px solid #b8c1cc;
   overflow-y: auto;
-  height: 185vh;
-}
-
-.sidebar-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  height: 100vh;
 }
 
 .sidebar ul {
@@ -49,7 +45,6 @@ body {
 .sidebar ul li.active,
 .sidebar ul li:hover {
   background-color: #153991;
-  border: none;
   color: #f2f2f2;
   border-radius: 25px;
   padding: 5%;
@@ -57,7 +52,8 @@ body {
 }
 
 .main-content {
-  width: 85%;
+  flex-grow: 1;
+  width: 100%;
 }
 
 /* Navbar */
@@ -66,7 +62,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 20px;
+  padding: 10px 20px;
   border-bottom: 1px solid #b8c1cc;
 }
 
@@ -76,82 +72,60 @@ body {
   gap: 10px;
 }
 
-.avatar-icon {
-  font-size: 24px;
-  color: #1e40af;
-}
-
 /* Filters */
 .filters {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
   padding: 20px;
-  justify-content: space-between;
 }
 
 /* Cards */
 .cards {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
 }
 
 .card {
   flex: 1;
+  min-width: 250px;
   background: white;
-  padding: 10px 20px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid #b8c1cc;
   text-align: center;
 }
 
-.card h5 {
-  margin-top: 10px;
-  font-weight: 500;
-  text-align: left;
-}
-
-.card p {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: left;
-  margin-bottom: -0.5%;
-}
-
 /* Charts */
 .charts {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   padding: 20px;
 }
 
 .chart-container {
   flex: 1;
+  min-width: 300px;
   background: white;
   padding: 20px;
-  padding-top: 5px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-.chart-container h4 {
-  margin-bottom: 25px;
-  text-align: left;
-  width: 100%;
 }
 
 /* Table */
 .table-container {
   margin: 20px;
   background: white;
-  padding: 2px;
+  padding: 10px;
   border-radius: 10px;
-
   border: 1px solid #b8c1cc;
+  overflow-x: auto;
 }
 
 .styled-table {
@@ -164,48 +138,108 @@ body {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
-  border: none;
-  padding: 2%;
 }
 
-.styled-table th {
-  background-color: white;
-}
-
-.styled-table td {
-  color: gray;
-}
-
-.styled-table tr:nth-child(odd) {
-  background-color: #f2f2f2;
-}
-
-.styled-table tr:hover {
-  background-color: #ddd;
-}
-
+/* Buttons */
 .download-btn {
   display: flex;
   align-items: center;
-  gap: 8px; /* Space between icon and text */
-  background-color: #1e40af; /* Blue color */
+  gap: 8px;
+  background-color: #1e40af;
   border-radius: 30px;
   color: white;
   border: none;
   padding: 10px 16px;
   cursor: pointer;
   font-size: 14px;
-  font-weight: 400;
 }
 
-.download-btn .icon {
-  font-size: 20px; /* Adjust icon size */
+@media screen and (min-width: 1024px) {
+  .nav-logo {
+    display: none;
+  }
 }
 
-.icon-container {
-  background-color: #1e40af;
-  width: 25px;
-  color: #ddd;
-  padding: 4%;
-  border-radius: 50px;
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #b8c1cc;
+    display: none;
+  }
+  .filters {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: "100px";
+  }
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #b8c1cc;
+    border: 1px solid black;
+    margin-bottom: 2%;
+    display: none;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    width: 86%;
+  }
+  .card {
+    width: 100%;
+  }
+  .charts {
+    flex-direction: column;
+  }
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    flex-direction: row;
+    gap: "100px";
+  }
+  .sidebar {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid #b8c1cc;
+  }
+  .sidebar ul li {
+    font-size: 12px;
+    padding: 10px;
+  }
+  .table-container {
+    padding: 5px;
+  }
+  .styled-table th,
+  .styled-table td {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .download-btn {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }
