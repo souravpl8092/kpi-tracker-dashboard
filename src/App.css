@@ -24,12 +24,17 @@ body {
   padding: 20px;
   border-right: 1px solid #b8c1cc;
   overflow-y: auto;
-  height: 100vh;
+  height: 185vh;
 }
 
 .sidebar ul {
   list-style: none;
   padding: 0;
+}
+
+.sidebar-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
 .sidebar ul li {
@@ -42,9 +47,15 @@ body {
   font-size: 14px;
 }
 
+.avatar-icon {
+  font-size: 24px;
+  color: #1e40af;
+}
+
 .sidebar ul li.active,
 .sidebar ul li:hover {
   background-color: #153991;
+  border: none;
   color: #f2f2f2;
   border-radius: 25px;
   padding: 5%;
@@ -62,7 +73,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 0px 20px;
   border-bottom: 1px solid #b8c1cc;
 }
 
@@ -84,7 +95,8 @@ body {
 .cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  row-gap: 20px;
+  column-gap: 20px;
   padding: 20px;
 }
 
@@ -96,6 +108,26 @@ body {
   border-radius: 10px;
   border: 1px solid #b8c1cc;
   text-align: center;
+  max-width: 350px;
+}
+.card h5 {
+  margin-top: 10px;
+  font-weight: 500;
+  text-align: left;
+}
+.card p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: -0.5%;
+}
+
+.icon-container {
+  background-color: #1e40af;
+  width: 25px;
+  color: #ddd;
+  padding: 4%;
+  border-radius: 50px;
 }
 
 /* Charts */
@@ -118,6 +150,13 @@ body {
   align-items: center;
 }
 
+.chart-container h4 {
+  margin-top: -1%;
+  margin-bottom: 25px;
+  text-align: left;
+  width: 100%;
+}
+
 /* Table */
 .table-container {
   margin: 20px;
@@ -138,6 +177,24 @@ body {
   border: 1px solid #ddd;
   padding: 10px;
   text-align: left;
+  border: none;
+  padding: 2%;
+}
+
+.styled-table th {
+  background-color: white;
+}
+
+.styled-table td {
+  color: gray;
+}
+
+.styled-table tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.styled-table tr:hover {
+  background-color: #ddd;
 }
 
 /* Buttons */
@@ -177,6 +234,9 @@ body {
   .filters {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
+  .icon-container {
+    padding: 2%;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -199,18 +259,25 @@ body {
     align-items: flex-start;
   }
   .cards {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    width: 86%;
+    width: 92%;
   }
   .card {
     width: 100%;
+    max-width: 700px;
   }
   .charts {
     flex-direction: column;
   }
   .filters {
     grid-template-columns: 1fr;
+  }
+  .download-btn {
+    width: 200px;
+  }
+  .icon-container {
+    padding: 1%;
   }
 }
 
